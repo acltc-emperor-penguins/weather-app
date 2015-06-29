@@ -1,0 +1,17 @@
+<h1>Current Weather</h1>
+<%= form_tag "/", method: :get do %>
+  <%= label_tag :city %>
+  <%= text_field_tag :city %>
+  <%= label_tag :state %>
+  <%= text_field_tag :state %>
+  <%= submit_tag "Check Weather" %>
+<% end %>
+<h2>Current Temperature: <%= @temperature %></h2>
+<%= @description.html_safe %>
+<% @forecasts.each do |forecast| %>
+  <h4><%= forecast["day"] %></h4>
+  <h4>High: <%= forecast["high"] %></h4>
+  <h4>Low: <%= forecast["low"] %></h4>
+  <h4>Condition: <%= forecast["text"] %></h4>
+  <hr>
+<% end %>
